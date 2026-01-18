@@ -9,11 +9,11 @@ Erstmal nur für Windows 10/11 x64. Wer einen Mac oder Linux-PC hat, kann natür
 1280x720 (windowed, resizable)
 
 ## Tastaturbelegung
-ESC			Programm beenden
-PageDown	Fenstermodus
-PageUp		Vollbild
-1			Hintergrund 1 (schwarz)
-2 			Hintergrund 2 (Unterwasser)
+-ESC			Programm beenden
+-PageDown	Fenstermodus
+-PageUp		Vollbild
+-1			Hintergrund 1 (schwarz)
+-2 			Hintergrund 2 (Unterwasser)
 
 ### Software
 Godot 4.5 Mono (C#)
