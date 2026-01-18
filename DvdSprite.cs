@@ -3,22 +3,23 @@ using System;
 
 public partial class DvdSprite : Sprite2D
 {
-    [Export]
-    public float Speed = 300f;
+    [Export] public float Speed = 300f;
+
+    [Export] public Sprite2D Background1;
+    [Export] public Sprite2D Background2;
 
     private Vector2 velocity;
     private Vector2 screenSize;
     private Vector2 spriteSize;
+
+    private bool isFullscreen = true;
 
     public override void _Ready()
     {
         screenSize = GetViewportRect().Size;
         spriteSize = Texture.GetSize() * Scale;
 
-        // Zufällige diagonale Startbewegung
-        float angle = (float)GD.RandRange(0.25f, 0.75f) * Mathf.Pi;
-
-        // Zufällige Start-Richtung links / rechts
+        float angle = (float)GD.RandRange(0.4f, 0.6f) * Mathf.Pi;
         float dirX = GD.Randf() < 0.5f ? -1f : 1f;
 
         velocity = new Vector2(
@@ -26,21 +27,79 @@ public partial class DvdSprite : Sprite2D
             Mathf.Sin(angle)
         ).Normalized() * Speed;
 
+        SetFullscreen(true);
+        SetBackground(1);
         UpdateOrientation();
     }
 
     public override void _Process(double delta)
     {
-        // ESC → ScreenSaver beenden
+        // ESC → beenden
         if (Input.IsActionJustPressed("ui_cancel"))
-        {
             GetTree().Quit();
+
+        // Hintergrund wechseln
+        if (Input.IsKeyPressed(Key.Key1)) SetBackground(1);
+        if (Input.IsKeyPressed(Key.Key2)) SetBackground(2);
+
+        // Fenster-Modus wechseln (Input Map)
+        if (Input.IsActionJustPressed("fullscreen"))
+            SetFullscreen(true);
+
+        if (Input.IsActionJustPressed("windowed"))
+            SetFullscreen(false);
+
+        MoveSprite(delta);
+    }
+
+
+    // =======================
+    // Fenster / Vollbild
+    // =======================
+    private void SetFullscreen(bool fullscreen)
+    {
+        if (isFullscreen == fullscreen)
+            return;
+
+        isFullscreen = fullscreen;
+
+        if (fullscreen)
+        {
+            DisplayServer.WindowSetMode(
+                DisplayServer.WindowMode.Fullscreen
+            );
+        }
+        else
+        {
+            DisplayServer.WindowSetMode(
+                DisplayServer.WindowMode.Windowed
+            );
+
+            DisplayServer.WindowSetSize(new Vector2I(1280, 720));
         }
 
+        screenSize = GetViewportRect().Size;
+    }
+
+
+
+    public override void _Notification(int what)
+    {
+        if (what == NotificationWMSizeChanged)
+        {
+            screenSize = GetViewportRect().Size;
+        }
+    }
+
+
+    // =======================
+    // Bewegung
+    // =======================
+    private void MoveSprite(double delta)
+    {
         Vector2 position = Position;
         position += velocity * (float)delta;
 
-        // Linker Rand → nach rechts reflektieren + Orientierung normal
         if (position.X <= spriteSize.X / 2f)
         {
             position.X = spriteSize.X / 2f;
@@ -48,7 +107,6 @@ public partial class DvdSprite : Sprite2D
             UpdateOrientation();
         }
 
-        // Rechter Rand → nach links reflektieren + Orientierung gespiegelt
         if (position.X >= screenSize.X - spriteSize.X / 2f)
         {
             position.X = screenSize.X - spriteSize.X / 2f;
@@ -56,14 +114,12 @@ public partial class DvdSprite : Sprite2D
             UpdateOrientation();
         }
 
-        // Oberer Rand (keine Orientierung)
         if (position.Y <= spriteSize.Y / 2f)
         {
             position.Y = spriteSize.Y / 2f;
             velocity.Y = Math.Abs(velocity.Y);
         }
 
-        // Unterer Rand (keine Orientierung)
         if (position.Y >= screenSize.Y - spriteSize.Y / 2f)
         {
             position.Y = screenSize.Y - spriteSize.Y / 2f;
@@ -75,8 +131,15 @@ public partial class DvdSprite : Sprite2D
 
     private void UpdateOrientation()
     {
-        // Kopf zeigt nach rechts → FlipH = false
-        // Kopf zeigt nach links → FlipH = true
         FlipH = velocity.X < 0f;
+    }
+
+    private void SetBackground(int index)
+    {
+        if (Background1 != null)
+            Background1.Visible = index == 1;
+
+        if (Background2 != null)
+            Background2.Visible = index == 2;
     }
 }

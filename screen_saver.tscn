@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyxu06blhs1hd"]
+[gd_scene load_steps=6 format=3 uid="uid://cyxu06blhs1hd"]
 
 [ext_resource type="Texture2D" uid="uid://dhct3xk3s661x" path="res://gfx/Background.png" id="1_x3whh"]
-[ext_resource type="Texture2D" uid="uid://gm01vk5ilvuh" path="res://gfx/walter.png" id="2_xrr1c"]
+[ext_resource type="Texture2D" uid="uid://cn8x6ulmghthc" path="res://gfx/bg2.png" id="2_xrr1c"]
 [ext_resource type="Script" uid="uid://bwt8aowarmh6m" path="res://DvdSprite.cs" id="3_gmnny"]
+[ext_resource type="Texture2D" uid="uid://luql6r16ve6i" path="res://gfx/Walter-original.png" id="3_qidc6"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_qidc6"]
 diffuse_texture = ExtResource("1_x3whh")
@@ -18,7 +19,14 @@ position = Vector2(574.49994, 324.00003)
 scale = Vector2(1160.9999, 660.0001)
 texture = SubResource("CanvasTexture_qidc6")
 
-[node name="Walter" type="Sprite2D" parent="."]
-position = Vector2(176, 76)
+[node name="WaterBackground" type="Sprite2D" parent="."]
+position = Vector2(957, 600)
 texture = ExtResource("2_xrr1c")
+
+[node name="Walter" type="Sprite2D" parent="." node_paths=PackedStringArray("Background1", "Background2")]
+position = Vector2(251, 107)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_qidc6")
 script = ExtResource("3_gmnny")
+Background1 = NodePath("../Background")
+Background2 = NodePath("../WaterBackground")
