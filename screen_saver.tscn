@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyxu06blhs1hd"]
+
+[ext_resource type="Texture2D" uid="uid://dhct3xk3s661x" path="res://gfx/Background.png" id="1_x3whh"]
+[ext_resource type="Texture2D" uid="uid://gm01vk5ilvuh" path="res://gfx/walter.png" id="2_xrr1c"]
+[ext_resource type="Script" uid="uid://bwt8aowarmh6m" path="res://DvdSprite.cs" id="3_gmnny"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_qidc6"]
+diffuse_texture = ExtResource("1_x3whh")
+specular_texture = ExtResource("1_x3whh")
+specular_color = Color(0, 0, 0, 1)
+texture_repeat = 2
+
+[node name="ScreenSaver" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(574.49994, 324.00003)
+scale = Vector2(1160.9999, 660.0001)
+texture = SubResource("CanvasTexture_qidc6")
+
+[node name="Walter" type="Sprite2D" parent="."]
+position = Vector2(176, 76)
+texture = ExtResource("2_xrr1c")
+script = ExtResource("3_gmnny")
