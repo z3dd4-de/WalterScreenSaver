@@ -27,3 +27,7 @@ Der Walhai Walter gehört Frau Ehrlich Unehrlich. Die Verwendung ist nur mit ihr
 ### Screenshots
 ![Schwarzer Hintergrund](screenshot1.png)
 ![Unterwasser Hintergrund](screenshot2.png)
+
+### Links
+YouTube: https://www.youtube.com/@EhrlichUnehrlich/featured
+Reddit: https://www.reddit.com/r/EhrlichUnehrlich/
