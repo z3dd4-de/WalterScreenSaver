@@ -10,7 +10,7 @@ public partial class DvdSprite : Sprite2D
 
     [Export] public float AngleStepDegrees = 5f; // wie stark Pfeiltasten wirken
     [Export] public RichTextLabel PauseLabel;
-    private bool pauseLabelVisible = false;
+    private bool pauseLabelVisible = true;
 
     private Vector2 velocity;
     private Vector2 screenSize;
@@ -92,9 +92,31 @@ public partial class DvdSprite : Sprite2D
         if (Input.IsActionJustPressed("show_pause"))
             TogglePauseLabel();
 
+        // Speed einstellen
+        if (Input.IsActionJustPressed("speed_up"))
+            SetSpeed(50);
+
+        if (Input.IsActionJustPressed("speed_down"))
+            SetSpeed(-50);
+
         MoveSprite(delta);
     }
 
+    private void SetSpeed(float value)
+    {
+        Speed += value;
+        if (Speed <= 0) Speed = 50f;
+        // aktueller Winkel
+        float angle = Mathf.Atan2(velocity.Y, velocity.X);
+
+        // neue Geschwindigkeit setzen
+        velocity = new Vector2(
+            Mathf.Cos(angle),
+            Mathf.Sin(angle)
+        ).Normalized() * Speed;
+
+        UpdateOrientation();
+    }
 
     // =======================
     // Fenster / Vollbild
