@@ -23,10 +23,41 @@ texture = SubResource("CanvasTexture_qidc6")
 position = Vector2(957, 600)
 texture = ExtResource("2_xrr1c")
 
-[node name="Walter" type="Sprite2D" parent="." node_paths=PackedStringArray("Background1", "Background2")]
+[node name="Walter" type="Sprite2D" parent="." node_paths=PackedStringArray("Background1", "Background2", "PauseLabel")]
 position = Vector2(251, 107)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_qidc6")
 script = ExtResource("3_gmnny")
 Background1 = NodePath("../Background")
 Background2 = NodePath("../WaterBackground")
+PauseLabel = NodePath("../CanvasLayer/PauseRichTextLabel")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseRichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.5
+offset_top = -96.0
+offset_right = 215.5
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_colors/default_color = Color(0.7529412, 0.9764706, 0.003921569, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0.011764706, 0)
+theme_override_font_sizes/normal_font_size = 140
+theme_override_font_sizes/bold_font_size = 120
+theme_override_font_sizes/bold_italics_font_size = 120
+theme_override_font_sizes/italics_font_size = 120
+text = "Pause"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1

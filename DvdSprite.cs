@@ -8,6 +8,10 @@ public partial class DvdSprite : Sprite2D
     [Export] public Sprite2D Background1;
     [Export] public Sprite2D Background2;
 
+    [Export] public float AngleStepDegrees = 5f; // wie stark Pfeiltasten wirken
+    [Export] public RichTextLabel PauseLabel;
+    private bool pauseLabelVisible = false;
+
     private Vector2 velocity;
     private Vector2 screenSize;
     private Vector2 spriteSize;
@@ -32,8 +36,43 @@ public partial class DvdSprite : Sprite2D
         UpdateOrientation();
     }
 
+    private void TogglePauseLabel()
+    {
+        pauseLabelVisible = !pauseLabelVisible;
+
+        if (PauseLabel != null)
+            PauseLabel.Visible = pauseLabelVisible;
+    }
+
+    private void AdjustAngle(float degrees)
+    {
+        float speed = velocity.Length();
+
+        // aktueller Winkel
+        float angle = Mathf.Atan2(velocity.Y, velocity.X);
+
+        // Winkel ändern
+        angle += Mathf.DegToRad(degrees);
+
+        // neue Geschwindigkeit setzen
+        velocity = new Vector2(
+            Mathf.Cos(angle),
+            Mathf.Sin(angle)
+        ).Normalized() * speed;
+
+        UpdateOrientation();
+    }
+
+
     public override void _Process(double delta)
     {
+        // Winkel anpassen
+        if (Input.IsKeyPressed(Key.Up))
+            AdjustAngle(-AngleStepDegrees);
+
+        if (Input.IsKeyPressed(Key.Down))
+            AdjustAngle(AngleStepDegrees);
+
         // ESC → beenden
         if (Input.IsActionJustPressed("ui_cancel"))
             GetTree().Quit();
@@ -48,6 +87,10 @@ public partial class DvdSprite : Sprite2D
 
         if (Input.IsActionJustPressed("windowed"))
             SetFullscreen(false);
+
+        // "Pause"-Label ein / ausblenden
+        if (Input.IsActionJustPressed("show_pause"))
+            TogglePauseLabel();
 
         MoveSprite(delta);
     }
