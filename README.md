@@ -3,6 +3,7 @@ Walter der Walhai, ein DVD-Logo Ersatz für den Livestream von @EhrlichUnehrlich
 
 ## System
 Erstmal nur für Windows 10/11 x64. Wer einen Mac oder Linux-PC hat, kann natürlich die Godot 4.5-Dateien nehmen und einen eigenen Build erstellen.
+Linux-Version gibt es unter /runtime
 
 ## Auflösung
 1920x1080 FullHD (default, Fullscreen)
@@ -14,6 +15,9 @@ Erstmal nur für Windows 10/11 x64. Wer einen Mac oder Linux-PC hat, kann natür
 * PageUp :		Vollbild
 * 1 :			Hintergrund 1 (schwarz)
 * 2 :			Hintergrund 2 (Unterwasser)
+* Pfeil hoch : Winkel hoch
+* Pfeil runter : Winkel runter
+* P : Pause-Label anzeigen/nicht anzeigen
 
 ### Software
 Godot 4.5 Mono (C#)
@@ -27,6 +31,8 @@ Der Walhai Walter gehört Frau Ehrlich Unehrlich. Die Verwendung ist nur mit ihr
 ### Screenshots
 ![Schwarzer Hintergrund](screenshot1.png)
 ![Unterwasser Hintergrund](screenshot2.png)
+![Schwarzer Hintergrund Pause](screenshot1_pause.png)
+![Unterwasser Hintergrund Pause](screenshot2_pause.png)
 
 ### Links
 YouTube: https://www.youtube.com/@EhrlichUnehrlich/featured
