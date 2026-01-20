@@ -1,9 +1,9 @@
-# Walter ScreenSaver
+# Walter ScreenSaver v1.0.0.2
 Walter der Walhai, ein DVD-Logo Ersatz für den Livestream von @EhrlichUnehrlich
 
 ## System
-Erstmal nur für Windows 10/11 x64. Wer einen Mac oder Linux-PC hat, kann natürlich die Godot 4.5-Dateien nehmen und einen eigenen Build erstellen.
-Linux-Version gibt es unter /runtime
+Windows 10/11 x64. Wer einen Mac hat, kann natürlich die Godot 4.5-Dateien nehmen und einen eigenen Build erstellen.
+Linux-Version gibt es auch als Package.
 
 ## Auflösung
 1920x1080 FullHD (default, Fullscreen)
@@ -18,6 +18,8 @@ Linux-Version gibt es unter /runtime
 * Pfeil hoch : Winkel hoch
 * Pfeil runter : Winkel runter
 * P : Pause-Label anzeigen/nicht anzeigen
+* Plus : Geschwindigkeit von Walter erhöhen
+* Minus : Geschwindigkeit von Walter niedriger
 
 ### Software
 Godot 4.5 Mono (C#)
