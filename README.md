@@ -6,8 +6,8 @@ Windows 10/11 x64. Wer einen Mac hat, kann natürlich die Godot 4.5-Dateien nehm
 Eine Linux-Version gibt es auch als Release.
 
 ## Auflösung
-1920x1080 FullHD (default, Fullscreen)
-1280x720 (windowed, resizable)
+* 1920x1080 FullHD (default, Fullscreen)
+* 1280x720 (windowed, resizable)
 
 ## Tastaturbelegung
 * ESC	:		Programm beenden
