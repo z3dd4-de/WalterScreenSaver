@@ -9,11 +9,11 @@ Erstmal nur für Windows 10/11 x64. Wer einen Mac oder Linux-PC hat, kann natür
 1280x720 (windowed, resizable)
 
 ## Tastaturbelegung
-ESC			Programm beenden
-PageDown	Fenstermodus
-PageUp		Vollbild
-1			Hintergrund 1 (schwarz)
-2 			Hintergrund 2 (Unterwasser)
+* ESC	:		Programm beenden
+* PageDown :	Fenstermodus
+* PageUp :		Vollbild
+* 1 :			Hintergrund 1 (schwarz)
+* 2 :			Hintergrund 2 (Unterwasser)
 
 ### Software
 Godot 4.5 Mono (C#)
@@ -27,3 +27,7 @@ Der Walhai Walter gehört Frau Ehrlich Unehrlich. Die Verwendung ist nur mit ihr
 ### Screenshots
 ![Schwarzer Hintergrund](screenshot1.png)
 ![Unterwasser Hintergrund](screenshot2.png)
+
+### Links
+YouTube: https://www.youtube.com/@EhrlichUnehrlich/featured
+Reddit: https://www.reddit.com/r/EhrlichUnehrlich/
